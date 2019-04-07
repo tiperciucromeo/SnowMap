@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:id="@+id/radio_group_list_selector"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:orientation="horizontal"
+        android:elevation="89dp"
+        android:background="#ffffff">
+
+        <Button
+            android:id="@+id/butonInapoi"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal|center_vertical"
+            android:layout_weight="1"
+            android:background="@drawable/ic_back"
+            />
+
+        <TextView
+            android:id="@+id/radioCategory"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF"
+            android:layout_weight="1"
+            android:text="LISTA PARTII"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:gravity="center_horizontal|center_vertical"
+            />
+        <ImageButton
+            android:id="@+id/newspaper"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal|center_vertical"
+            android:layout_weight="1"
+            android:background="@drawable/ic_menu"
+            android:text="ALL LOCATIONS" />
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recyclerv_view">
+
+    </android.support.v7.widget.RecyclerView>
+
+
+</LinearLayout>

@@ -1,0 +1,44 @@
+{
+  "project_info": {
+    "project_number": "57894937495",
+    "firebase_url": "https://snowmap.firebaseio.com",
+    "project_id": "snowmap",
+    "storage_bucket": "snowmap.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:57894937495:android:84f8d2d5bdf66f09",
+        "android_client_info": {
+          "package_name": "com.example.snowmap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "57894937495-v8mh45nopppt3cilgoit3mfetsbo9hqd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.snowmap",
+            "certificate_hash": "a7c24b848b5927cc901f6671fe85352b5786719b"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8YqJPT-XpTHtbZq8UNy33cB1q4dLbVKk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "57894937495-9491lgppv3pu61sov3k7p2um30t056r9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

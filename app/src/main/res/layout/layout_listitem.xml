@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:id="@+id/parent_layout">
+
+    <TextView
+        android:id="@+id/denumire"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Denumire Partie"
+        android:textSize="25sp"
+        android:padding="10dp"
+        android:background="@drawable/layout_bg"
+        android:textStyle="bold"
+        android:textColor="#000"/>
+
+    <TextView
+        android:id="@+id/distanta"
+        android:layout_below="@+id/denumire"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Distanta 18km"
+        android:padding="10dp"
+        android:background="@drawable/layout_bg"
+        android:textSize="18sp" />
+</RelativeLayout>
+

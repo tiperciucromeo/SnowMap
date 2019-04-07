@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentDetalii"
+    android:background="@drawable/layout_detalii"
+   >
+
+    <!-- TODO: Update blank fragment layout -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DETALII"
+        android:padding="20dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:id="@+id/detalii"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:background="@drawable/layout_detalii"/>
+    </ScrollView>
+
+</FrameLayout>
