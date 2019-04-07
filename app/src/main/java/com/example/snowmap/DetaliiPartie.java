@@ -50,7 +50,7 @@ public class DetaliiPartie extends MainActivity {
         }); //la click , ma va duce inapoi la lista de partii
 
         numePartie = getIntent().getStringExtra("NUME_PARTIE"); //iau numele partiei  din lista ca sa personalizez detaliile
-        Log.w("Extra", numePartie); //verificare daca imi ia bine
+        Log.w("Extra12345", numePartie); //verificare daca imi ia bine
         partiaCutare.setText(numePartie);
 
 
