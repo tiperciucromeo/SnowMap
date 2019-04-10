@@ -18,20 +18,29 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class DetaliiPartie extends MainActivity {
 
 
-    private ArrayList<String> Listapoze = new ArrayList<>();
+    private ArrayList<File> Listapoze = new ArrayList<>(); //am facut din array list de stringuri , array list de file
     private String numePartie;
     Fragment fragment;
+    File localFile;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +62,8 @@ public class DetaliiPartie extends MainActivity {
         Log.w("Extra12345", numePartie); //verificare daca imi ia bine
         partiaCutare.setText(numePartie);
 
-
         getImages();
+
     }
 
     public void inapoiLaHarta() { // aceasta metoda ma duce inapoi la Pagina principala cu partia
@@ -62,23 +71,51 @@ public class DetaliiPartie extends MainActivity {
         startActivity(intent);
     }
 
-
-
     //ASTEA O SA MI LE IAU DIN BAZA DE DATE
     private void getImages(){
         //trebuie sa imi ia din baza de date poze si sa mi le adauge in Listapoze
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference pozeRef = database.getReference("Partii").child(this.numePartie).child("Poze");
 
+        pozeRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                List<String> pozeList = (List<String>)dataSnapshot.getValue();
+                FirebaseStorage storage = FirebaseStorage.getInstance();
+                for (String nume : pozeList) {
+                    StorageReference pozaRef = storage.getReference().child(nume);
+                    try {
+                        localFile = File.createTempFile("images", "jpg");
+                    } catch (Exception e) {
+                        Log.d("nu,nu", "nu funtioneaza");
+                    }
+                    pozaRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+
+                           // Iterator iterator = Listapoze.iterator();
+                            //while (iterator.hasNext()) {
+                                Listapoze.add(localFile);
+                            initRecyclerView();
+                          //  }
+                        }
 
 
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.d("DEBUG", "failed to download img from firebase storage");
+                        }
+                    });
+                }
+            }
 
-        Listapoze.add("https://c1.staticflickr.com/5/4636/25316407448_de5fbf183d_o.jpg");
-        Listapoze.add("https://i.redd.it/tpsnoz5bzo501.jpg");
-        Listapoze.add("https://i.redd.it/qn7f9oqu7o501.jpg");
-        Listapoze.add("https://i.redd.it/j6myfqglup501.jpg");
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.w("nu nu nu", "Failed to read value.");
+            }
+        });
 
-        initRecyclerView();
     }
 
     private void initRecyclerView(){
@@ -105,25 +142,28 @@ public class DetaliiPartie extends MainActivity {
         ft.commitNow();
     }
 
-    public void ChangeFragment(View view){
+    public void ChangeFragment(View view) {
 
-            if(view == findViewById(R.id.butonDetalii)){
-                fragment = new FragmentDetalii();
-                trimitereDateFragment();
-            }
-            if(view == findViewById(R.id.butonVremea)){
-                fragment = new FragmentVremea();
-                trimitereDateFragment();
-            }
-            if(view == findViewById(R.id.butonPreturi)){
-                fragment = new FragmentPreturi();
-                trimitereDateFragment();
-            }
-            if(view == findViewById(R.id.butonProgram)){
-                fragment = new FragmentProgram();
-                trimitereDateFragment();
-            }
+        if (view == findViewById(R.id.butonDetalii)) {
+            fragment = new FragmentDetalii();
+            trimitereDateFragment();
         }
+        if (view == findViewById(R.id.butonVremea)) {
+            fragment = new FragmentVremea();
+            trimitereDateFragment();
+
+        }
+        if (view == findViewById(R.id.butonPreturi)) {
+            fragment = new FragmentPreturi();
+            trimitereDateFragment();
+
+        }
+        if (view == findViewById(R.id.butonProgram)) {
+            fragment = new FragmentProgram();
+            trimitereDateFragment();
+
+        }
+    }
 
 
 }

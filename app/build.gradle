@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.snowmap"
-        minSdkVersion 16
+        minSdkVersion 17
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -39,9 +39,11 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:16.0.7'
     implementation 'com.google.firebase:firebase-database:16.0.1'
     implementation 'com.firebaseui:firebase-ui-database:4.3.2'
+    implementation 'com.google.firebase:firebase-storage:16.1.0'
 
 
     implementation 'com.google.android.gms:play-services-location:15.0.1'
+    implementation "com.google.firebase:firebase-auth:16.2.0"
     implementation 'com.karumi:dexter:5.0.0'
 }
 

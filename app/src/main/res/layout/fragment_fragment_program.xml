@@ -1,15 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentProgram">
-
+    tools:context=".FragmentProgram"
+    android:background="#ffffff"
+    android:gravity="center"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical">
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
+        android:id="@+id/layout1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="PROGRAM"
-        android:background="@color/primary_material_light"/>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentStart="true"
+        android:padding="20dp">
+        <TextView
+            android:layout_alignParentStart="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Luni - Vineri            "
+            android:textSize="25sp"
+            />
+        <TextView
+            android:layout_alignParentEnd="true"
+            android:id="@+id/lunivineri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="27sp"
+            android:textStyle="bold"
+            android:text="ore"
 
-</FrameLayout>
+            />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_below="@+id/layout1"
+        android:layout_alignParentStart="true"
+        android:id="@+id/layout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="20dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sambata                 "
+            android:layout_alignParentStart="true"
+            android:textSize="25sp"
+            />
+        <TextView
+            android:layout_alignParentEnd="true"
+            android:id="@+id/sambata"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ore"
+            android:textSize="27sp"
+            android:textStyle="bold"
+
+            />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_below="@+id/layout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentStart="true"
+        android:padding="20dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Duminica"
+            android:layout_alignParentStart="true"
+            android:textSize="25sp"
+            />
+        <TextView
+            android:id="@+id/duminica"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ore"
+            android:textSize="27sp"
+            android:textStyle="bold"
+            android:layout_alignParentEnd="true"
+            />
+
+    </RelativeLayout>
+</RelativeLayout>
+</LinearLayout>

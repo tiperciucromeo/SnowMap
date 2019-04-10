@@ -28,16 +28,17 @@ import android.support.v4.app.DialogFragment;
 
 import com.bumptech.glide.Glide;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class HorizontalRecyclerViewPoze extends RecyclerView.Adapter<HorizontalRecyclerViewPoze.ViewHolder>  {
 
-    private ArrayList<String> Listapoze;
+    private ArrayList<File> Listapoze; //am schimbat aici din string in file
     private Context mContext;
 
     private ArrayList<String> listapozeDialog = new ArrayList<>();
 
-    public HorizontalRecyclerViewPoze(Context mContext,ArrayList<String> poze) {
+    public HorizontalRecyclerViewPoze(Context mContext,ArrayList<File> poze) { //am schimbat aici din arraylist de string in file
         this.Listapoze = poze;
         this.mContext = mContext;
     }
@@ -55,6 +56,8 @@ public class HorizontalRecyclerViewPoze extends RecyclerView.Adapter<HorizontalR
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Log.w("DEBUGING", "onBindView");
+        //trebuie sa iterez aici lista de obiecte ca sa adaug
+
         Glide.with(mContext).asBitmap().load(Listapoze.get(position)).into(holder.poza);
 
 
@@ -111,18 +114,6 @@ public class HorizontalRecyclerViewPoze extends RecyclerView.Adapter<HorizontalR
         listapozeDialog.add("https://i.redd.it/tpsnoz5bzo501.jpg");
 
         listapozeDialog.add("https://i.redd.it/qn7f9oqu7o501.jpg");
-
-        listapozeDialog.add("https://i.redd.it/j6myfqglup501.jpg");
-
-        listapozeDialog.add("https://i.redd.it/0h2gm1ix6p501.jpg");
-
-        listapozeDialog.add("https://i.redd.it/k98uzl68eh501.jpg");
-
-        listapozeDialog.add("https://i.redd.it/glin0nwndo501.jpg");
-
-        listapozeDialog.add("https://i.redd.it/obx4zydshg601.jpg");
-
-        listapozeDialog.add("https://i.imgur.com/ZcLLrkY.jpg");
 
     }
 

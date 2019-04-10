@@ -50,10 +50,8 @@ public class HorizontalRecyclerViewDialog extends RecyclerView.Adapter<Horizonta
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        //acest view holder imi tine in memorie fiecare widget
-
         ImageView pozaDialog;
-        LinearLayout parent_layoutpozaDialog; //asta il folosesc doar daca vreau sa dau click pe dialog si sa am un eveniment pe el
+        LinearLayout parent_layoutpozaDialog;
 
 
         public ViewHolder(@NonNull View itemView) {

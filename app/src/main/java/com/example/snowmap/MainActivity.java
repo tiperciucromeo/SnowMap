@@ -132,6 +132,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
 
         readFromDB();
 
+
     }
 
     @Override
@@ -154,15 +155,20 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
 
         mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(this));
 
-        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+
+
+
+       mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
 
 
             @Override
             public void onInfoWindowClick(Marker marker) { //trimit spre detalii partie intent-ul cu titlul partiei, pentru personalizarea layputului
                 String numePartie = marker.getTitle();
+
                 Intent intent = new Intent(MainActivity.this, DetaliiPartie.class);
                 intent.putExtra("NUME_PARTIE", numePartie);
                 startActivity(intent);
+                
             }
         });
 
@@ -196,7 +202,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
                 Map<String, Object> mapPartii = (Map<String, Object>) dataSnapshot.getValue();
 
                 for (Map.Entry<String, Object> entry : mapPartii.entrySet()) {
-                    String numePartie = entry.getKey();
+                   final String numePartie = entry.getKey();
 
                     Map<String, Object> partie = (Map<String, Object>)entry.getValue();
                     double longitudine = (double)partie.get("Long");
@@ -205,6 +211,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
                     mMap.addMarker(new MarkerOptions().
                             position(new LatLng(latitudine, longitudine)).
                             title(numePartie));
+
                 }
             }
             @Override
@@ -317,6 +324,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -324,6 +332,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
             mGoogleApiClient.connect();
         }
     }
+
     @Override
     protected void onStop() {
         super.onStop();
