@@ -20,12 +20,16 @@
         android:padding="16dp">
 
         <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="@drawable/grey"
        >
 
         <TextView
-            android:padding="16dp"
+
+            android:textSize="23sp"
+            android:textColor="#000000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="AZI"
@@ -36,7 +40,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Descriere: "
+            android:text="Descriere "
+            android:textSize="20sp"
             android:id="@+id/descriere"
             android:layout_below="@+id/azi"/>
 
@@ -44,36 +49,48 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1"
+            android:textStyle="bold"
+            android:layout_alignParentEnd="true"
+            android:textColor="#000000"
+            android:textSize="20sp"
             android:id="@+id/descJSON"
             android:layout_below="@+id/azi"
-            android:layout_toRightOf="@+id/descriere"/>
+            />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Temperatura minima: "
-            android:id="@+id/tempmin"
-            android:layout_below="@+id/descriere"/>
+            <TextView
+                android:id="@+id/tempmin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/descriere"
+                android:text="Temperatură minimă  "
+                android:textSize="20sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="#000000"
             android:id="@+id/tempminJSON"
             android:layout_below="@+id/descriere"
-            android:layout_toRightOf="@+id/tempmin"/>
+            android:layout_alignParentEnd="true"/>
 
         <TextView
         android:id="@+id/tempmax"
         android:layout_below="@+id/tempmin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Temperatura maxima: "/>
+            android:textSize="20sp"
+        android:text="Temperatură maximă "/>
         <TextView
             android:id="@+id/tempmaxJSON"
             android:layout_below="@+id/tempmin"
             android:layout_width="wrap_content"
-            android:layout_toRightOf="@+id/tempmax"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_alignParentEnd="true"
             android:layout_height="wrap_content"
             android:text="3"/>
 
@@ -83,41 +100,53 @@
             android:id="@+id/umiditate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Umiditate: "
+            android:text="Umiditate "
+            android:textSize="20sp"
             android:layout_below="@id/tempmax"/>
         <TextView
             android:id="@+id/umiditateJSON"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="4"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:textSize="20sp"
             android:layout_below="@id/tempmax"
-            android:layout_toRightOf="@id/umiditate"/>
+            android:layout_alignParentEnd="true"/>
         <TextView
             android:id="@+id/vant"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vant: "
+            android:text="Vânt  "
+            android:textSize="20sp"
             android:layout_below="@id/umiditate"/>
         <TextView
             android:id="@+id/vantJSON"
             android:layout_width="wrap_content"
+            android:textSize="20sp"
             android:layout_height="wrap_content"
             android:text="5"
-            android:layout_toRightOf="@+id/vant"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_alignParentEnd="true"
             android:layout_below="@id/umiditate"/>
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@drawable/grey"
 
         >
 
         <TextView
-            android:padding="16dp"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="MAINE"
+            android:text="MÂINE"
+            android:textSize="23sp"
+            android:textColor="#000000"
             android:textStyle="bold"
             android:background="@color/background_floating_material_light"
             android:id="@+id/azi2"/>
@@ -125,42 +154,54 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Descriere: "
+            android:text="Descriere "
+            android:textSize="20sp"
             android:id="@+id/descriere2"
             android:layout_below="@+id/azi2"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:textSize="20sp"
             android:id="@+id/descriereJSON2"
-            android:layout_toRightOf="@+id/descriere2"
+            android:layout_alignParentEnd="true"
             android:layout_below="@+id/azi2"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Temperatura minima: "
+            android:text="Temperatură minimă  "
             android:id="@+id/tempmin2"
+            android:textSize="20sp"
             android:layout_below="@+id/descriere2"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:textStyle="bold"
             android:id="@+id/tempminJSON2"
             android:layout_below="@+id/descriere2"
-            android:layout_toRightOf="@id/tempmin2"/>
+            android:layout_alignParentEnd="true"/>
 
         <TextView
             android:id="@+id/tempmax2"
             android:layout_below="@+id/tempmin2"
             android:layout_width="wrap_content"
+            android:textSize="20sp"
             android:layout_height="wrap_content"
-            android:text="Temperatura maxima: "/>
+            android:text="Temperatură maximă "/>
         <TextView
             android:id="@+id/tempmaxJSON2"
             android:layout_below="@+id/tempmin2"
             android:layout_width="wrap_content"
-            android:layout_toRightOf="@id/tempmax2"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_alignParentEnd="true"
             android:layout_height="wrap_content"
             android:text="3"/>
 
@@ -168,39 +209,50 @@
             android:id="@+id/umiditate2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Umiditate: "
+            android:textSize="20sp"
+            android:text="Umiditate "
             android:layout_below="@id/tempmax2"/>
         <TextView
             android:id="@+id/umiditateJSON2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="20sp"
             android:text="4"
-            android:layout_toRightOf="@id/umiditate2"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_alignParentEnd="true"
             android:layout_below="@id/tempmax2"/>
         <TextView
             android:id="@+id/vant2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vant: "
+            android:textSize="20sp"
+            android:text="Vânt  "
             android:layout_below="@id/umiditate2"/>
         <TextView
             android:id="@+id/vantJSON2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="5"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:textSize="20sp"
             android:layout_below="@id/umiditate2"
-            android:layout_toRightOf="@id/vant2"/>
+            android:layout_alignParentEnd="true"/>
     </RelativeLayout>
     <RelativeLayout
-        android:layout_width="wrap_content"
-
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:background="@drawable/grey"
         android:layout_height="wrap_content">
 
         <TextView
-            android:padding="16dp"
+
+            android:textSize="23sp"
+            android:textColor="#000000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="POIMAINE"
+            android:text="POIMÂINE"
             android:textStyle="bold"
             android:background="@color/background_floating_material_light"
             android:id="@+id/azi3"/>
@@ -208,73 +260,93 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Descriere: "
+            android:text="Descriere "
             android:id="@+id/descriere3"
+            android:textSize="20sp"
             android:layout_below="@+id/azi3"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:textSize="20sp"
             android:id="@+id/descriereJSON3"
-            android:layout_toRightOf="@id/descriere3"
+            android:layout_alignParentEnd="true"
             android:layout_below="@+id/azi3"/>
 
         <TextView
             android:layout_width="wrap_content"
+            android:textSize="20sp"
             android:layout_height="wrap_content"
-            android:text="Temperatura minima: "
+            android:text="Temperatură minimă  "
             android:id="@+id/tempmin3"
             android:layout_below="@+id/descriere3"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="20sp"
             android:text="2"
+            android:textStyle="bold"
+            android:textColor="#000000"
             android:id="@+id/tempminJSON3"
             android:layout_below="@+id/descriere3"
-            android:layout_toRightOf="@+id/tempmin3"/>
+            android:layout_alignParentEnd="true"/>
 
 
         <TextView
             android:id="@+id/tempmax3"
             android:layout_below="@+id/tempmin3"
+            android:textSize="20sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Temperatura maxima: "/>
+            android:text="Temperatură maximă "/>
 
         <TextView
             android:id="@+id/tempmaxJSON3"
             android:layout_below="@+id/tempmin3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
             android:text="3"
-            android:layout_toRightOf="@+id/tempmax3"/>
+            android:layout_alignParentEnd="true"/>
 
         <TextView
             android:id="@+id/umiditate3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Umiditate: "
+            android:textSize="20sp"
+            android:text="Umiditate "
             android:layout_below="@id/tempmax3"/>
         <TextView
             android:id="@+id/umiditateJSON3"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="4"
-            android:layout_toRightOf="@+id/umiditate3"
+            android:layout_alignParentEnd="true"
             android:layout_below="@id/tempmax3"/>
         <TextView
             android:id="@+id/vant3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vant: "
+            android:textSize="20sp"
+            android:text="Vânt  "
             android:layout_below="@id/umiditate3"/>
         <TextView
             android:id="@+id/vantJSON3"
             android:layout_width="wrap_content"
+            android:textSize="20sp"
             android:layout_height="wrap_content"
             android:text="5"
-            android:layout_toRightOf="@+id/vant3"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_alignParentEnd="true"
             android:layout_below="@id/umiditate3"/>
     </RelativeLayout>
 
