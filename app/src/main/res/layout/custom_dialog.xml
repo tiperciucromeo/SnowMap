@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="310dp"
+    android:layout_height="370dp"
     android:layout_gravity="center"
-    android:background="@drawable/layout_dialog"
     android:orientation="horizontal"
 
     >
@@ -12,10 +11,10 @@
 
     <ImageView
             android:id="@+id/pozaDialog"
-            android:layout_width="280dp"
+            android:layout_width="310dp"
             android:layout_gravity="center"
-            android:layout_height="340dp"
-            android:background="@drawable/layout_dialog"
+            android:layout_height="370dp"
+
            />
 
-</FrameLayout>
+</RelativeLayout>
