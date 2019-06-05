@@ -15,9 +15,12 @@
         <!-- TODO: Update blank fragment layout -->
         <RelativeLayout
             android:id="@+id/layout1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:background="@drawable/grey"
             android:layout_alignParentStart="true"
             android:padding="10dp">
             <TextView
@@ -34,6 +37,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="23sp"
                 android:textStyle="bold"
+                android:textColor="#000000"
                 android:text=""
 
                 />
@@ -43,9 +47,12 @@
             android:layout_below="@+id/layout1"
             android:layout_alignParentStart="true"
             android:id="@+id/layout2"
+            android:layout_marginLeft="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:background="@drawable/grey"
             android:padding="10dp">
             <TextView
                 android:layout_width="wrap_content"
@@ -61,6 +68,7 @@
                 android:layout_height="wrap_content"
                 android:text=""
                 android:textSize="23sp"
+                android:textColor="#000000"
                 android:textStyle="bold"
 
                 />
@@ -73,6 +81,9 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_alignParentStart="true"
+            android:background="@drawable/grey"
+            android:layout_marginLeft="10dp"
+            android:layout_marginEnd="10dp"
             android:padding="10dp">
             <TextView
                 android:layout_width="wrap_content"
@@ -89,6 +100,7 @@
                 android:textSize="23sp"
                 android:textStyle="bold"
                 android:layout_alignParentEnd="true"
+                android:textColor="#000000"
                 />
 
         </RelativeLayout>
@@ -96,9 +108,13 @@
             android:layout_below="@+id/layout3"
             android:id="@+id/layout4"
             android:layout_width="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:background="@drawable/grey"
             android:layout_alignParentStart="true"
+
             android:padding="10dp">
             <TextView
                 android:layout_width="wrap_content"
@@ -113,6 +129,7 @@
                 android:layout_height="wrap_content"
                 android:text=""
                 android:textSize="23sp"
+                android:textColor="#000000"
                 android:textStyle="bold"
                 android:layout_alignParentEnd="true"
                 />
@@ -123,7 +140,10 @@
             android:layout_width="wrap_content"
             android:id="@+id/layout5"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginEnd="10dp"
             android:orientation="horizontal"
+            android:background="@drawable/grey"
             android:layout_alignParentStart="true"
             android:padding="10dp"
             >
@@ -140,6 +160,7 @@
                 android:layout_height="wrap_content"
                 android:text=""
                 android:textSize="23sp"
+                android:textColor="#000000"
                 android:textStyle="bold"
                 android:layout_alignParentEnd="true"
                 />
