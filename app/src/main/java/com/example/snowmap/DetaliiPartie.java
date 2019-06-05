@@ -37,7 +37,11 @@ import java.util.List;
 public class DetaliiPartie extends MainActivity {
 
 
-    private ArrayList<File> Listapoze = new ArrayList<>(); //am facut din array list de stringuri , array list de file
+    private ArrayList<File> Listapoze = new ArrayList<>();
+
+
+
+
     private String numePartie;
     Fragment fragment;
     File localFile;
@@ -50,6 +54,14 @@ public class DetaliiPartie extends MainActivity {
 
         Button butonInapoi = findViewById(R.id.butonInapoi);
         TextView partiaCutare = findViewById(R.id.partiaCutare);
+        final Button hartaPartiei = findViewById(R.id.hartaPartiei);
+
+        hartaPartiei.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hartaPartie();
+            }
+        });
 
         butonInapoi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +79,13 @@ public class DetaliiPartie extends MainActivity {
     }
 
     public void inapoiLaHarta() { // aceasta metoda ma duce inapoi la Pagina principala cu partia
-        Intent intent = new Intent(this,ListaPartii.class);
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void hartaPartie(){
+        Intent intent = new Intent(this,HartaPartiei.class);
+        intent.putExtra("NUME_PARTIE", numePartie);
         startActivity(intent);
     }
 
@@ -77,6 +95,9 @@ public class DetaliiPartie extends MainActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference pozeRef = database.getReference("Partii").child(this.numePartie).child("Poze");
 
+        //sterge asta daca nu merge persistenta
+      //  pozeRef.keepSynced(true);
+
         pozeRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -85,19 +106,16 @@ public class DetaliiPartie extends MainActivity {
                 for (String nume : pozeList) {
                     StorageReference pozaRef = storage.getReference().child(nume);
                     try {
-                        localFile = File.createTempFile("images", "jpg");
+                        String fileName = nume.substring(nume.indexOf('/') + 1);
+                        localFile = File.createTempFile(fileName, "");
+                        Listapoze.add(localFile);
                     } catch (Exception e) {
-                        Log.d("nu,nu", "nu funtioneaza");
+                        Log.d("nu,nu", e.getMessage());
                     }
                     pozaRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-
-                           // Iterator iterator = Listapoze.iterator();
-                            //while (iterator.hasNext()) {
-                                Listapoze.add(localFile);
                             initRecyclerView();
-                          //  }
                         }
 
 
@@ -123,7 +141,6 @@ public class DetaliiPartie extends MainActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this,
                 LinearLayoutManager.HORIZONTAL,false);
 
-        //aici e posibil sa trebuiasca sa schimb in horizontal...RecyclerView
         RecyclerView recyclerView = findViewById(R.id.recyclerViewPoze);
         recyclerView.setLayoutManager(layoutManager);
         HorizontalRecyclerViewPoze adapter = new HorizontalRecyclerViewPoze(this,Listapoze);

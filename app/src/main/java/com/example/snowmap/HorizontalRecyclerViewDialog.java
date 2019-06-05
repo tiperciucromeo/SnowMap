@@ -13,15 +13,16 @@ import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class HorizontalRecyclerViewDialog extends RecyclerView.Adapter<HorizontalRecyclerViewDialog.ViewHolder>  {
 
 
-    private ArrayList<String> listapozeDialog;
+    private ArrayList<File> listapozeDialog;
     private Context mContext;
 
-    public HorizontalRecyclerViewDialog( Context mContext,ArrayList<String> listapoze) {
+    public HorizontalRecyclerViewDialog(Context mContext,ArrayList<File> listapoze) {
         listapozeDialog = listapoze;
         this.mContext = mContext;
     }
@@ -33,13 +34,11 @@ public class HorizontalRecyclerViewDialog extends RecyclerView.Adapter<Horizonta
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_dialog,
                 parent,false);
         return new HorizontalRecyclerViewDialog.ViewHolder(view);
-// metoda asta e la fel pentru toate recyclerViews , nu trebuie sa inteleg mare lucru din ea
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Glide.with(mContext).asBitmap().load(listapozeDialog.get(position)).into(holder.pozaDialog);
-
 
     }
 

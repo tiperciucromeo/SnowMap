@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -6,47 +7,277 @@
     android:orientation="vertical"
     android:background="#ffffff"
     tools:context=".FragmentVremea">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="VREMEA"
-        android:background="@color/background_floating_material_light"/>
-    <TextView
-        android:id="@+id/city"
+       >
+
+        <TextView
+            android:padding="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AZI"
+            android:textStyle="bold"
+            android:background="@color/background_floating_material_light"
+            android:id="@+id/azi"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Descriere: "
+            android:id="@+id/descriere"
+            android:layout_below="@+id/azi"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:id="@+id/descJSON"
+            android:layout_below="@+id/azi"
+            android:layout_toRightOf="@+id/descriere"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Temperatura minima: "
+            android:id="@+id/tempmin"
+            android:layout_below="@+id/descriere"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2"
+            android:id="@+id/tempminJSON"
+            android:layout_below="@+id/descriere"
+            android:layout_toRightOf="@+id/tempmin"/>
+
+        <TextView
+        android:id="@+id/tempmax"
+        android:layout_below="@+id/tempmin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="oras" />
+        android:text="Temperatura maxima: "/>
+        <TextView
+            android:id="@+id/tempmaxJSON"
+            android:layout_below="@+id/tempmin"
+            android:layout_width="wrap_content"
+            android:layout_toRightOf="@+id/tempmax"
+            android:layout_height="wrap_content"
+            android:text="3"/>
 
-    <TextView
-        android:id="@+id/description"
+
+
+        <TextView
+            android:id="@+id/umiditate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Umiditate: "
+            android:layout_below="@id/tempmax"/>
+        <TextView
+            android:id="@+id/umiditateJSON"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4"
+            android:layout_below="@id/tempmax"
+            android:layout_toRightOf="@id/umiditate"/>
+        <TextView
+            android:id="@+id/vant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vant: "
+            android:layout_below="@id/umiditate"/>
+        <TextView
+            android:id="@+id/vantJSON"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5"
+            android:layout_toRightOf="@+id/vant"
+            android:layout_below="@id/umiditate"/>
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="descriere"/>
 
-    <TextView
-        android:id="@+id/temperature"
+        >
+
+        <TextView
+            android:padding="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MAINE"
+            android:textStyle="bold"
+            android:background="@color/background_floating_material_light"
+            android:id="@+id/azi2"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Descriere: "
+            android:id="@+id/descriere2"
+            android:layout_below="@+id/azi2"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:id="@+id/descriereJSON2"
+            android:layout_toRightOf="@+id/descriere2"
+            android:layout_below="@+id/azi2"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Temperatura minima: "
+            android:id="@+id/tempmin2"
+            android:layout_below="@+id/descriere2"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2"
+            android:id="@+id/tempminJSON2"
+            android:layout_below="@+id/descriere2"
+            android:layout_toRightOf="@id/tempmin2"/>
+
+        <TextView
+            android:id="@+id/tempmax2"
+            android:layout_below="@+id/tempmin2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Temperatura maxima: "/>
+        <TextView
+            android:id="@+id/tempmaxJSON2"
+            android:layout_below="@+id/tempmin2"
+            android:layout_width="wrap_content"
+            android:layout_toRightOf="@id/tempmax2"
+            android:layout_height="wrap_content"
+            android:text="3"/>
+
+        <TextView
+            android:id="@+id/umiditate2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Umiditate: "
+            android:layout_below="@id/tempmax2"/>
+        <TextView
+            android:id="@+id/umiditateJSON2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4"
+            android:layout_toRightOf="@id/umiditate2"
+            android:layout_below="@id/tempmax2"/>
+        <TextView
+            android:id="@+id/vant2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vant: "
+            android:layout_below="@id/umiditate2"/>
+        <TextView
+            android:id="@+id/vantJSON2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5"
+            android:layout_below="@id/umiditate2"
+            android:layout_toRightOf="@id/vant2"/>
+    </RelativeLayout>
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="temperatura"/>
 
-    <TextView
-        android:id="@+id/umiditate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="umiditate"/>
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/presiune"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="presiune"/>
+        <TextView
+            android:padding="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="POIMAINE"
+            android:textStyle="bold"
+            android:background="@color/background_floating_material_light"
+            android:id="@+id/azi3"/>
 
-    <TextView
-        android:id="@+id/update"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="update"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Descriere: "
+            android:id="@+id/descriere3"
+            android:layout_below="@+id/azi3"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:id="@+id/descriereJSON3"
+            android:layout_toRightOf="@id/descriere3"
+            android:layout_below="@+id/azi3"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Temperatura minima: "
+            android:id="@+id/tempmin3"
+            android:layout_below="@+id/descriere3"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2"
+            android:id="@+id/tempminJSON3"
+            android:layout_below="@+id/descriere3"
+            android:layout_toRightOf="@+id/tempmin3"/>
+
+
+        <TextView
+            android:id="@+id/tempmax3"
+            android:layout_below="@+id/tempmin3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Temperatura maxima: "/>
+
+        <TextView
+            android:id="@+id/tempmaxJSON3"
+            android:layout_below="@+id/tempmin3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3"
+            android:layout_toRightOf="@+id/tempmax3"/>
+
+        <TextView
+            android:id="@+id/umiditate3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Umiditate: "
+            android:layout_below="@id/tempmax3"/>
+        <TextView
+            android:id="@+id/umiditateJSON3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4"
+            android:layout_toRightOf="@+id/umiditate3"
+            android:layout_below="@id/tempmax3"/>
+        <TextView
+            android:id="@+id/vant3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vant: "
+            android:layout_below="@id/umiditate3"/>
+        <TextView
+            android:id="@+id/vantJSON3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5"
+            android:layout_toRightOf="@+id/vant3"
+            android:layout_below="@id/umiditate3"/>
+    </RelativeLayout>
+
+    </LinearLayout>
+</ScrollView>
 </LinearLayout>

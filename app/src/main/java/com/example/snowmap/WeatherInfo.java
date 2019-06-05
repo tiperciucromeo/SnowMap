@@ -1,28 +1,19 @@
 package com.example.snowmap;
 
 public class WeatherInfo {
-    private String city;
+    private double minTemperature;
+    private double maxTemperature;
+    private double humidity;
+    private double speedWind;
     private String description;
-    private String temperature;
-    private String humidity;
-    private String pressure;
-    private String updatedOn;
+    //TODO: snow
 
-    public WeatherInfo(String city, String description, String temperature, String humidity, String pressure, String updatedOn) {
-        this.city = city;
-        this.description = description;
-        this.temperature = temperature;
+    public WeatherInfo(double minTemperature, double maxTemperature, double humidity, double speedWind, String description) {
+        this.minTemperature = minTemperature;
+        this.maxTemperature = maxTemperature;
         this.humidity = humidity;
-        this.pressure = pressure;
-        this.updatedOn = updatedOn;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
+        this.speedWind = speedWind;
+        this.description = description;
     }
 
     public String getDescription() {
@@ -33,35 +24,35 @@ public class WeatherInfo {
         this.description = description;
     }
 
-    public String getTemperature() {
-        return temperature;
+    public double getMinTemperature() {
+        return minTemperature;
     }
 
-    public void setTemperature(String temperature) {
-        this.temperature = temperature;
+    public void setMinTemperature(double minTemperature) {
+        this.minTemperature = minTemperature;
     }
 
-    public String getHumidity() {
+    public double getMaxTemperature() {
+        return maxTemperature;
+    }
+
+    public void setMaxTemperature(double maxTemperature) {
+        this.maxTemperature = maxTemperature;
+    }
+
+    public double getHumidity() {
         return humidity;
     }
 
-    public void setHumidity(String humidity) {
+    public void setHumidity(double humidity) {
         this.humidity = humidity;
     }
 
-    public String getPressure() {
-        return pressure;
+    public double getSpeedWind() {
+        return speedWind;
     }
 
-    public void setPressure(String pressure) {
-        this.pressure = pressure;
-    }
-
-    public String getUpdatedOn() {
-        return updatedOn;
-    }
-
-    public void setUpdatedOn(String updatedOn) {
-        this.updatedOn = updatedOn;
+    public void setSpeedWind(double speedWind) {
+        this.speedWind = speedWind;
     }
 }

@@ -39,13 +39,12 @@ public class RecyclerViewAdapterLista extends RecyclerView.Adapter<RecyclerViewA
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.denumire.setText(mDenumire.get(position));
 
-        //aici o sa imi trebuiasca si distantele
+        holder.distanta.setText(mDistanta.get(position));
+
 
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext,"Apasat pe tragaci",Toast.LENGTH_SHORT).show();
-
 
                 Intent intent = new Intent(mContext, DetaliiPartie.class);
                 intent.putExtra("NUME_PARTIE", mDenumire.get(position));

@@ -15,12 +15,16 @@
       },
       "oauth_client": [
         {
-          "client_id": "57894937495-v8mh45nopppt3cilgoit3mfetsbo9hqd.apps.googleusercontent.com",
+          "client_id": "57894937495-jim7itielr3uip6vqfg9vkndvgfo0se5.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.snowmap",
             "certificate_hash": "a7c24b848b5927cc901f6671fe85352b5786719b"
           }
+        },
+        {
+          "client_id": "57894937495-9491lgppv3pu61sov3k7p2um30t056r9.apps.googleusercontent.com",
+          "client_type": 3
         }
       ],
       "api_key": [

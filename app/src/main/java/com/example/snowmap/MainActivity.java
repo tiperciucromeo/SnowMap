@@ -1,7 +1,6 @@
 package com.example.snowmap;
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -23,12 +22,19 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.gms.common.ConnectionResult;
@@ -47,13 +53,17 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Logger;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
@@ -73,8 +83,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     private ImageButton butonLista;
-    private ImageButton imageButtonsearch;
-    private RecyclerView mResultList;
+
     private static final String TAG = "MainActivity";
     private GoogleApiClient mGoogleApiClient;
     private Location mLocation;
@@ -90,29 +99,61 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
     private boolean isPermission;
     private ArrayList<String> numelePartiilor;
 
+    private EditText mSearchField;
+    private ImageButton mSearchButton;
+    private RecyclerView mResultList;
+    private DatabaseReference mPartiiDatabase;
+    private ArrayList<String> fullNamePartii;
+    private SearchFirebaseAdapter searchFirebaseAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mSearchButton = findViewById(R.id.imageButtonsearch);
+        mSearchField = findViewById(R.id.search_field);
+        mResultList = findViewById(R.id.result_list);
+
+
+
+
+
+        mSearchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+
+
+        mPartiiDatabase = FirebaseDatabase.getInstance().getReference().child("Partii");
+        mResultList.setHasFixedSize(true);
+        mResultList.setLayoutManager(new LinearLayoutManager(this));
+        //mResultList.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+
+        fullNamePartii = new ArrayList<>();
+
+        mSearchField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                setAdapter(s.toString());
+            }
+        });
 
         butonLista = findViewById(R.id.butonLista);
-        imageButtonsearch = findViewById(R.id.imageButtonsearch);
-
-
-
         butonLista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openListaPartii();
-            }
-        });
-
-        imageButtonsearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //firebaseNumeSearch();
             }
         });
 
@@ -134,10 +175,44 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
 
 
     }
+// De aici incerc search
+
+    private void setAdapter(final String searchedString) {
+        mPartiiDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+             //eliberez lista de fiecare data cand fac un nou search
+                fullNamePartii.clear();
+                mResultList.removeAllViews();
+                if (!searchedString.isEmpty()) {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        String full_partiiName = snapshot.getKey();
+                        if (full_partiiName.toLowerCase().startsWith(searchedString.toLowerCase())) {
+                            fullNamePartii.add(full_partiiName);
+                        }
+                    }
+                }
+                //SEARCH BAR
+                searchFirebaseAdapter = new SearchFirebaseAdapter(MainActivity.this,fullNamePartii);
+                mResultList.setAdapter(searchFirebaseAdapter);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.w("DEBUGING", "Failed to read value.", databaseError.toException());
+            }
+        });
+    }
+
+//pana aici
+
+
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+
         mMap = googleMap;
+
+        goToLocationZoom(46.185551, 24.781264,6);
 
         try {
             // Customise the styling of the base map using a JSON object defined
@@ -176,16 +251,18 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
 
 
         if (latLng != null) {
-           mMap.addMarker(new MarkerOptions().position(latLng));
+           //mMap.addMarker(new MarkerOptions().position(latLng));
 
-           goToLocationZoom(lat,lon,7);
+           //goToLocationZoom(lat,lon,7);
 
-            Circle circle = mMap.addCircle(new CircleOptions()
+
+             mMap.addCircle(new CircleOptions()
                     .center(latLng)
-                    .radius(5000)
-                    .strokeWidth(2)
-                    .strokeColor(Color.TRANSPARENT)
+                    .radius(15000)
+                    .strokeWidth(12)
+                    .strokeColor(Color.WHITE)
                     .fillColor(Color.parseColor("#6D6FFF")));
+
 
        }
     }
@@ -210,7 +287,8 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
 
                     mMap.addMarker(new MarkerOptions().
                             position(new LatLng(latitudine, longitudine)).
-                            title(numePartie));
+                            title(numePartie)).setIcon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_mountain));
+
 
                 }
             }
@@ -272,6 +350,8 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         //acesta metoda va fi aplicata la apasarea butonului si v-a crea o noua activitate,
         // cea cu lista de partii
         Intent intent = new Intent(this, ListaPartii.class);
+        intent.putExtra("latCurenta",lat);
+        intent.putExtra("lonCurenta",lon);
         startActivity(intent);
     }
 
@@ -280,7 +360,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED &&
                 ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
-                        != PackageManager.PERMISSION_GRANTED) {
+                        != PackageManager.PERMISSION_GRANTED) { //verific daca am permisiunea
             return;
         }
         startLocationUpdates();
@@ -296,6 +376,9 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
     public void onLocationChanged(Location location) {
         lat = location.getLatitude();
         lon = location.getLongitude();
+
+        //lat , lon trebuie trimise in listapartii
+
 
         latLng = new LatLng(location.getLatitude(), location.getLongitude());
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -347,6 +430,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
     }
+
 
 }
 

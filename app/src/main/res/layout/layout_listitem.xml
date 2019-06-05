@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp"
+    android:padding="16dp"
     android:id="@+id/parent_layout">
 
     <TextView
@@ -12,19 +12,19 @@
         android:layout_height="wrap_content"
         android:text="Denumire Partie"
         android:textSize="25sp"
-        android:padding="10dp"
-        android:background="@drawable/layout_bg"
+        android:background="@drawable/layout_list"
         android:textStyle="bold"
         android:textColor="#000"/>
 
     <TextView
         android:id="@+id/distanta"
+        android:background="@drawable/layout_list"
         android:layout_below="@+id/denumire"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="16dp"
         android:text="Distanta 18km"
-        android:padding="10dp"
-        android:background="@drawable/layout_bg"
+        android:layout_marginBottom="10dp"
         android:textSize="18sp" />
 </RelativeLayout>
 
